@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.maschel</groupId>
             <artifactId>lcadevice</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <version>0.1.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -27,6 +27,12 @@
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.maschel</groupId>
+            <artifactId>roombajssc</artifactId>
+            <version>1.0.1</version>
         </dependency>
 
     </dependencies>
