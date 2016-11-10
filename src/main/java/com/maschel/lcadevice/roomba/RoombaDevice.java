@@ -45,6 +45,14 @@ import com.maschel.roomba.song.RoombaNote;
 import com.maschel.roomba.song.RoombaNoteDuration;
 import com.maschel.roomba.song.RoombaSongNote;
 
+/*
+ * RoombaDevice class
+ * Class that extends the Device library class.
+ * Used to hold all the manufacturer implementations of reading the sensors and actuating actuators.
+ * All the Components, Sensors and Actuators are created and added to the rootComponend in the setup() method.
+ * In connect() the Roomba will set up the serial connection, in disconnect() it will disconnect it.
+ * In update() the updateSensors() method of the roombaJSSC library is called to get all the new sensordata.
+ */
 public class RoombaDevice extends Device {
     private static final String ID = "Roomba1";
     private static final int SENSOR_UPDATE_INTERVAL = 50;
@@ -57,6 +65,13 @@ public class RoombaDevice extends Device {
 
     public void setup() {
 
+        /*
+         * We use a hierarchical Component model here.
+         * 'roomba' is the main Component, which has a few subcomponents ('motors' and 'battery')
+         * Many basic functions like 'startup' or 'clean' are under the 'roomba' component.
+         * The 'motors' component has different Components under it which represent the different motors of the Roomba.
+         * It also has the 'drive' Actuator directly under it.         *
+         */
         Component roombaComponent = new Component("roomba");
         addComponent(roombaComponent);
 
@@ -240,7 +255,7 @@ public class RoombaDevice extends Device {
     public void connect() {
         String[] ports = roombaJSSC.portList();
         System.out.println("Connecting");
-        roombaJSSC.connect("/dev/TTYUSB0");
+        roombaJSSC.connect("/dev/ttyUSB0");
         roombaJSSC.startup();
     }
 

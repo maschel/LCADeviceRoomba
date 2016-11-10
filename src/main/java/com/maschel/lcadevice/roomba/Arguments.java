@@ -39,6 +39,13 @@ import com.maschel.lca.device.actuator.Argument;
 
 import java.util.List;
 
+
+/*
+ *  Arguments class
+ *  Used to put static classes in that extend the Argument library class.
+ *  These classes are used to read custom arguments for Actuator commands.
+ *  The getVelocity and getRadius methods are read in the Actuators' actuate method.
+ */
 public class Arguments {
 
     public static class DriveArguments extends Argument {
@@ -47,8 +54,10 @@ public class Arguments {
 
         @Override
         public void parseRawArguments(List<Object> args) throws IllegalArgumentException {
-            this.velocity = (Integer)args.get(0);
-            this.radius = (Integer)args.get(1);
+            Long velLong = (Long)args.get(0);
+            Long radLong = (Long)args.get(1);
+            this.velocity = new Integer(velLong.intValue());
+            this.radius = new Integer(radLong.intValue());
         }
 
         public Integer getVelocity() {
