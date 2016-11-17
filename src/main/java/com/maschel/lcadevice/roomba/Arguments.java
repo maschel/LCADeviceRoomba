@@ -48,11 +48,10 @@ import java.util.List;
  */
 public class Arguments {
 
-    public static class DriveArguments extends Argument {
+    public static class DriveArguments implements Argument {
         private Integer velocity;
         private Integer radius;
 
-        @Override
         public void parseRawArguments(List<Object> args) throws IllegalArgumentException {
             Long velLong = (Long)args.get(0);
             Long radLong = (Long)args.get(1);
