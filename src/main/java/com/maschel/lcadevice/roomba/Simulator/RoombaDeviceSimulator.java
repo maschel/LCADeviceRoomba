@@ -33,12 +33,13 @@
  *
  */
 
-package com.maschel.lcadevice.roomba;
+package com.maschel.lcadevice.roomba.simulator;
 
 import com.maschel.lca.device.Component;
 import com.maschel.lca.device.Device;
-import com.maschel.lca.device.sensor.Sensor;
 import com.maschel.lca.device.actuator.Actuator;
+import com.maschel.lca.device.sensor.Sensor;
+import com.maschel.lcadevice.roomba.Arguments;
 import com.maschel.roomba.RoombaJSSC;
 import com.maschel.roomba.RoombaJSSCSerial;
 import com.maschel.roomba.song.RoombaNote;
@@ -46,24 +47,23 @@ import com.maschel.roomba.song.RoombaNoteDuration;
 import com.maschel.roomba.song.RoombaSongNote;
 
 /*
- * RoombaDevice class
- * Class that extends the Device library class.
+ * RoombaDeviceSimulator class
+ * Simulator class that simulates the Roomba device, by generating random values for the sensors/actuators.
  * Used to hold all the manufacturer implementations of reading the sensors and actuating actuators.
  * All the Components, Sensors and Actuators are created and added to the rootComponend in the setup() method.
- * In connect() the Roomba will set up the serial connection, in disconnect() it will disconnect it.
- * In update() the updateSensors() method of the roombaJSSC library is called to get all the new sensordata.
  */
-public class RoombaDevice extends Device {
-    private static final String ID = "Roomba1";
+public class RoombaDeviceSimulator extends Device {
+    private static final RandomGenerator rg = new RandomGenerator();
+    private static String ID = "";
     private static final int SENSOR_UPDATE_INTERVAL = 50;
 
-    private static final RoombaJSSC roombaJSSC = new RoombaJSSCSerial();
-
-    public RoombaDevice() {
+    public RoombaDeviceSimulator() {
         super(ID, SENSOR_UPDATE_INTERVAL);
     }
 
     public void setup() {
+        // Generate random device id
+        ID = rg.nextSessionId();
 
         /*
          * We use a hierarchical Component model here.
@@ -92,33 +92,33 @@ public class RoombaDevice extends Device {
 
         roombaComponent.add(new Actuator<Void>("clean") {
             public void actuate(Void args) throws IllegalArgumentException {
-                roombaJSSC.clean();
+                return;
             }
         });
         roombaComponent.add(new Actuator<Void>("cleanMax") {
             public void actuate(Void args) throws IllegalArgumentException {
-                roombaJSSC.cleanMax();
+                return;
             }
         });
         roombaComponent.add(new Actuator<Void>("cleanSpot") {
             public void actuate(Void args) throws IllegalArgumentException {
-                roombaJSSC.cleanSpot();
+                return;
             }
         });
         roombaComponent.add(new Actuator<Void>("seekDock") {
             public void actuate(Void args) throws IllegalArgumentException {
-                roombaJSSC.seekDock();
+                return;
             }
         });
 
         roombaComponent.add(new Actuator<Void>("startup") {
             public void actuate(Void args) throws IllegalArgumentException {
-                roombaJSSC.startup();
+                return;
             }
         });
         roombaComponent.add(new Actuator<Void>("powerOff") {
             public void actuate(Void args) throws IllegalArgumentException {
-                roombaJSSC.powerOff();
+                return;
             }
         });
 
@@ -128,38 +128,13 @@ public class RoombaDevice extends Device {
                 {
                     throw new IllegalArgumentException();
                 }
-                roombaJSSC.digitLedsAscii(args.charAt(0),args.charAt(1),args.charAt(2),args.charAt(3));
+                return;
             }
         });
 
         roombaComponent.add(new Actuator<Void>("playMusic") {
             public void actuate(Void args) throws IllegalArgumentException {
-
-                // Fur Elise - Beethoven
-                RoombaSongNote[] notes = {
-                        new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.D2Sharp, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.D2Sharp, RoombaNoteDuration.EightNote),
-
-                        new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.EightNote),
-
-                        new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.QuarterNote),
-                        new RoombaSongNote(RoombaNote.Pause, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.C1, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.E1, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
-                        new RoombaSongNote(RoombaNote.Pause, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.E1, RoombaNoteDuration.EightNote)
-                };
-                // Save to song number 0, tempo (in BPM) 125
-                roombaJSSC.song(0, notes, 125);
-                // Play song 0
-                roombaJSSC.play(0);
+                return;
             }
         });
 
@@ -167,42 +142,42 @@ public class RoombaDevice extends Device {
         motorsComponent.add(new Actuator<Arguments.DriveArguments>("drive") {
             @Override
             public void actuate(Arguments.DriveArguments driveArguments) throws IllegalArgumentException {
-                roombaJSSC.drive(driveArguments.getVelocity(), driveArguments.getRadius());
+                return;
             }
         });
 
         motorsComponent.add(new Sensor("distanceTraveled") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.distanceTraveled();
+                return rg.randomInteger(-32768, 32767);
             }
         });
 
         leftMotorComponent.add(new Sensor("motorCurrentLeft") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.motorCurrentLeft();
+                return rg.randomInteger(-32768, 32767);
             }
         });
 
         rightMotorComponent.add(new Sensor("motorCurrentRight") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.motorCurrentRight();
+                return rg.randomInteger(-32768, 32767);
             }
         });
 
         mainBrushComponent.add(new Sensor("motorCurrentMainBrush") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.motorCurrentMainBrush();
+                return rg.randomInteger(-32768, 32767);
             }
         });
 
         sideBrushComponent.add(new Sensor("motorCurrentSideBrush") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.motorCurrentSideBrush();
+                return rg.randomInteger(-32768, 32767);
             }
         });
 
@@ -210,42 +185,42 @@ public class RoombaDevice extends Device {
         batteryComponent.add(new Sensor("chargingState") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.chargingState();
+                return rg.randomInteger(0, 5);
             }
         });
 
         batteryComponent.add(new Sensor("batteryVoltage") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.batteryVoltage();
+                return rg.randomInteger(0, 65535);
             }
         });
 
         batteryComponent.add(new Sensor("batteryCurrent") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.batteryCurrent() + 1;
+                return rg.randomInteger(-32768, 32768) + 1;
             }
         });
 
         batteryComponent.add(new Sensor("batteryTemperature") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.batteryTemperature();
+                return rg.randomInteger(-128, 127);
             }
         });
 
         batteryComponent.add(new Sensor("batteryCharge") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.batteryCharge();
+                return rg.randomInteger(0, 65535);
             }
         });
 
         batteryComponent.add(new Sensor("batteryCapacity") {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.batteryCapacity();
+                return rg.randomInteger(0, 65535);
             }
         });
         roombaComponent.add(batteryComponent);
@@ -253,19 +228,14 @@ public class RoombaDevice extends Device {
     }
 
     public void connect() {
-        String[] ports = roombaJSSC.portList();
-        System.out.println("Connecting");
-        roombaJSSC.connect("/dev/ttyUSB0");
-        roombaJSSC.startup();
+        return;
     }
 
     public void update() {
-        roombaJSSC.updateSensors();
+        return;
     }
 
     public void disconnect() {
-        System.out.println("Disconnecting");
-        roombaJSSC.stop();
-        roombaJSSC.disconnect();
+        return;
     }
 }
