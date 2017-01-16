@@ -35,10 +35,11 @@
 
 package com.maschel.lcadevice.roomba;
 
-import com.maschel.lca.device.Component;
-import com.maschel.lca.device.Device;
-import com.maschel.lca.device.sensor.Sensor;
-import com.maschel.lca.device.actuator.Actuator;
+import com.maschel.lca.lcadevice.analytics.*;
+import com.maschel.lca.lcadevice.device.Component;
+import com.maschel.lca.lcadevice.device.Device;
+import com.maschel.lca.lcadevice.device.sensor.Sensor;
+import com.maschel.lca.lcadevice.device.actuator.Actuator;
 import com.maschel.roomba.RoombaJSSC;
 import com.maschel.roomba.RoombaJSSCSerial;
 import com.maschel.roomba.song.RoombaNote;
@@ -171,12 +172,14 @@ public class RoombaDevice extends Device {
             }
         });
 
-        motorsComponent.add(new Sensor("distanceTraveled") {
+        Sensor distanceTraveledSensor = new Sensor("distanceTraveled") {
             @Override
             public Integer readSensor() {
                 return roombaJSSC.distanceTraveled();
             }
-        });
+        };
+        this.getAnalyticService().registerAnalytic(new Analytic(distanceTraveledSensor, AggregateOperator.TOTAL(0), TimeRange.DAY));
+        motorsComponent.add(distanceTraveledSensor);
 
         leftMotorComponent.add(new Sensor("motorCurrentLeft") {
             @Override
@@ -261,6 +264,10 @@ public class RoombaDevice extends Device {
 
     public void update() {
         roombaJSSC.updateSensors();
+    }
+
+    public Boolean deviceReadyForAnalyticDataSync() {
+        return roombaJSSC.homebaseChargerAvailable();
     }
 
     public void disconnect() {

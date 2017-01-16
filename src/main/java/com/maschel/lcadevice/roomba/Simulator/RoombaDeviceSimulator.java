@@ -33,12 +33,12 @@
  *
  */
 
-package com.maschel.lcadevice.roomba.simulator;
+package com.maschel.lcadevice.roomba.Simulator;
 
-import com.maschel.lca.device.Component;
-import com.maschel.lca.device.Device;
-import com.maschel.lca.device.actuator.Actuator;
-import com.maschel.lca.device.sensor.Sensor;
+import com.maschel.lca.lcadevice.device.Component;
+import com.maschel.lca.lcadevice.device.Device;
+import com.maschel.lca.lcadevice.device.actuator.Actuator;
+import com.maschel.lca.lcadevice.device.sensor.Sensor;
 import com.maschel.lcadevice.roomba.Arguments;
 import com.maschel.roomba.RoombaJSSC;
 import com.maschel.roomba.RoombaJSSCSerial;
@@ -233,6 +233,10 @@ public class RoombaDeviceSimulator extends Device {
 
     public void update() {
         return;
+    }
+
+    public Boolean deviceReadyForAnalyticDataSync() {
+        return null;
     }
 
     public void disconnect() {

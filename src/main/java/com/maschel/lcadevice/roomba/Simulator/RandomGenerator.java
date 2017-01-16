@@ -33,7 +33,7 @@
  *
  */
 
-package com.maschel.lcadevice.roomba.simulator;
+package com.maschel.lcadevice.roomba.Simulator;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

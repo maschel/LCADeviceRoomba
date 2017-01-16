@@ -35,7 +35,7 @@
 
 package com.maschel.lcadevice.roomba;
 
-import com.maschel.lca.device.actuator.Argument;
+import com.maschel.lca.lcadevice.device.actuator.Argument;
 
 import java.util.List;
 
