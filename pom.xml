@@ -14,19 +14,48 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <configuration>
+                    <programs>
+                        <program>
+                            <mainClass>jade.Boot</mainClass>
+                            <id>LCADeviceRoomba</id>
+                            <commandLineArguments>
+                                <commandLineArgument>-gui</commandLineArgument>
+                                <commandLineArgument>-agents roombaDevice:com.maschel.lca.lcadevice.agent.DeviceAgent(com.maschel.lcadevice.roomba.RoombaDevice)</commandLineArgument>
+                                <commandLineArgument>-port 12490</commandLineArgument>
+                            </commandLineArguments>
+                        </program>
+                    </programs>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
 
         <dependency>
             <groupId>com.maschel</groupId>
             <artifactId>lcadevice</artifactId>
-            <version>0.4.0-SNAPSHOT</version>
+            <version>0.4.1-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.maschel</groupId>
-            <artifactId>LCAMessage</artifactId>
-            <version>0.4.0-SNAPSHOT</version>
-        </dependency>
 
 
         <dependency>
