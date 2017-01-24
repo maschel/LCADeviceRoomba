@@ -135,11 +135,11 @@ public class RoombaDevice extends Device {
             }
         });
 
-        roombaComponent.add(new Actuator<Integer>("playMusic") {
-            public void actuate(Integer songName) throws IllegalArgumentException {
+        roombaComponent.add(new Actuator<Double>("playMusic") {
+            public void actuate(Double songName) throws IllegalArgumentException {
 		        roombaJSSC.safeMode();
                 System.out.println("Actuator playMusic: " + songName);
-                switch(songName){
+                switch(songName.intValue()){
                     case 0:
                         Music.knightRider(roombaJSSC);
                         break;
