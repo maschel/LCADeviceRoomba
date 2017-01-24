@@ -280,6 +280,8 @@ public class Music {
             new RoombaSongNote(RoombaNote.E1, RoombaNoteDuration.EightNote)
     };
 
+
+
     public static void furElise(RoombaJSSC roomba)
     {
         // Save to song number 0, tempo (in BPM) 125
@@ -347,6 +349,93 @@ public class Music {
         roomba.sleep(2600);
         roomba.play(2);
         roomba.sleep(2400);
+    }
+
+    public static RoombaSongNote[] blue1 = {
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.F1Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+
+            new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.C2Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.QuarterNote),
+
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.F2Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.G2, RoombaNoteDuration.EightNote),
+
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.F2Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+
+    };
+    public static RoombaSongNote[] blue2 = {
+            new RoombaSongNote(RoombaNote.F1Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
+
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.C2Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.F2Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.G2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+
+            new RoombaSongNote(RoombaNote.F2Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.WholeNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.F1Sharp, RoombaNoteDuration.EightNote),
+
+    };
+    public static RoombaSongNote[] blue3 = {
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.EightNote),
+
+            new RoombaSongNote(RoombaNote.C2Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+
+            new RoombaSongNote(RoombaNote.F2Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.G2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.F2Sharp, RoombaNoteDuration.EightNote),
+
+            new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.F1Sharp, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
+
+    };
+    public static RoombaSongNote[] blue4 = {
+            new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
+    };
+
+    public static void blue(RoombaJSSC roomba)
+    {
+        roomba.song(0, blue1, 100);
+        roomba.song(1, blue2, 100);
+        roomba.song(2, blue3, 100);
+
+        roomba.play(0);
+        roomba.sleep(5149);
+        roomba.play(1);
+        roomba.sleep(7249);
+        roomba.play(2);
+        roomba.sleep(5149);
+        roomba.play(3);
+        roomba.sleep(650);
     }
 
     public static void venga(RoombaJSSC roomba)
