@@ -226,7 +226,6 @@ public class RoombaDeviceSimulator extends Device {
         roombaComponent.add(batteryComponent);
 
     }
-    }
 
     public void connect() {
         return;
