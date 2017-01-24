@@ -146,35 +146,35 @@ public class RoombaDeviceSimulator extends Device {
             }
         });
 
-        motorsComponent.add(new Sensor("distanceTraveled") {
+        motorsComponent.add(new Sensor("distanceTraveled", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(-32768, 32767);
             }
         });
 
-        leftMotorComponent.add(new Sensor("motorCurrentLeft") {
+        leftMotorComponent.add(new Sensor("motorCurrentLeft", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(-32768, 32767);
             }
         });
 
-        rightMotorComponent.add(new Sensor("motorCurrentRight") {
+        rightMotorComponent.add(new Sensor("motorCurrentRight", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(-32768, 32767);
             }
         });
 
-        mainBrushComponent.add(new Sensor("motorCurrentMainBrush") {
+        mainBrushComponent.add(new Sensor("motorCurrentMainBrush", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(-32768, 32767);
             }
         });
 
-        sideBrushComponent.add(new Sensor("motorCurrentSideBrush") {
+        sideBrushComponent.add(new Sensor("motorCurrentSideBrush", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(-32768, 32767);
@@ -182,42 +182,42 @@ public class RoombaDeviceSimulator extends Device {
         });
 
         //BatteryComponent
-        batteryComponent.add(new Sensor("chargingState") {
+        batteryComponent.add(new Sensor("chargingState", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(0, 5);
             }
         });
 
-        batteryComponent.add(new Sensor("batteryVoltage") {
+        batteryComponent.add(new Sensor("batteryVoltage", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(0, 65535);
             }
         });
 
-        batteryComponent.add(new Sensor("batteryCurrent") {
+        batteryComponent.add(new Sensor("batteryCurrent", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(-32768, 32768) + 1;
             }
         });
 
-        batteryComponent.add(new Sensor("batteryTemperature") {
+        batteryComponent.add(new Sensor("batteryTemperature", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(-128, 127);
             }
         });
 
-        batteryComponent.add(new Sensor("batteryCharge") {
+        batteryComponent.add(new Sensor("batteryCharge", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(0, 65535);
             }
         });
 
-        batteryComponent.add(new Sensor("batteryCapacity") {
+        batteryComponent.add(new Sensor("batteryCapacity", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return rg.randomInteger(0, 65535);
@@ -225,6 +225,7 @@ public class RoombaDeviceSimulator extends Device {
         });
         roombaComponent.add(batteryComponent);
 
+    }
     }
 
     public void connect() {

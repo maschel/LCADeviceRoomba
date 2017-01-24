@@ -56,12 +56,13 @@ import com.maschel.roomba.song.RoombaSongNote;
  */
 public class RoombaDevice extends Device {
     private static final String ID = "Roomba1";
-    private static final int SENSOR_UPDATE_INTERVAL = 50;
+    private static final int ANALYTICS_SYNC_INTERVAL = 10000;
+    private static final int SENSOR_UPDATE_INTERVAL = 1000;
 
     private static final RoombaJSSC roombaJSSC = new RoombaJSSCSerial();
 
     public RoombaDevice() {
-        super(ID, SENSOR_UPDATE_INTERVAL);
+        super(ID, ANALYTICS_SYNC_INTERVAL, SENSOR_UPDATE_INTERVAL);
     }
 
     public void setup() {
@@ -93,6 +94,7 @@ public class RoombaDevice extends Device {
 
         roombaComponent.add(new Actuator<Void>("clean") {
             public void actuate(Void args) throws IllegalArgumentException {
+                System.out.println("Actuator clean");
                 roombaJSSC.clean();
             }
         });
@@ -135,6 +137,7 @@ public class RoombaDevice extends Device {
 
         roombaComponent.add(new Actuator<Void>("playMusic") {
             public void actuate(Void args) throws IllegalArgumentException {
+                System.out.println("Actuator playMusic");
 
                 // Fur Elise - Beethoven
                 RoombaSongNote[] notes = {
@@ -168,41 +171,43 @@ public class RoombaDevice extends Device {
         motorsComponent.add(new Actuator<Arguments.DriveArguments>("drive") {
             @Override
             public void actuate(Arguments.DriveArguments driveArguments) throws IllegalArgumentException {
+                System.out.println("Actuator drive: " + driveArguments.getVelocity() + ", " + driveArguments.getRadius());
                 roombaJSSC.drive(driveArguments.getVelocity(), driveArguments.getRadius());
             }
         });
 
-        Sensor distanceTraveledSensor = new Sensor("distanceTraveled") {
+        Sensor distanceTraveledSensor = new Sensor("distanceTraveled", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
+                System.out.println("Sensor distanceTraveled: " + roombaJSSC.distanceTraveled());
                 return roombaJSSC.distanceTraveled();
             }
         };
         this.getAnalyticService().registerAnalytic(new Analytic(distanceTraveledSensor, AggregateOperator.TOTAL(0), TimeRange.DAY));
         motorsComponent.add(distanceTraveledSensor);
 
-        leftMotorComponent.add(new Sensor("motorCurrentLeft") {
+        leftMotorComponent.add(new Sensor("motorCurrentLeft", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return roombaJSSC.motorCurrentLeft();
             }
         });
 
-        rightMotorComponent.add(new Sensor("motorCurrentRight") {
+        rightMotorComponent.add(new Sensor("motorCurrentRight", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return roombaJSSC.motorCurrentRight();
             }
         });
 
-        mainBrushComponent.add(new Sensor("motorCurrentMainBrush") {
+        mainBrushComponent.add(new Sensor("motorCurrentMainBrush", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return roombaJSSC.motorCurrentMainBrush();
             }
         });
 
-        sideBrushComponent.add(new Sensor("motorCurrentSideBrush") {
+        sideBrushComponent.add(new Sensor("motorCurrentSideBrush", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return roombaJSSC.motorCurrentSideBrush();
@@ -210,44 +215,49 @@ public class RoombaDevice extends Device {
         });
 
         //BatteryComponent
-        batteryComponent.add(new Sensor("chargingState") {
+        batteryComponent.add(new Sensor("chargingState", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
                 return roombaJSSC.chargingState();
             }
         });
 
-        batteryComponent.add(new Sensor("batteryVoltage") {
+        batteryComponent.add(new Sensor("batteryVoltage", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
+                System.out.println("Sensor batteryVoltage: " + roombaJSSC.batteryVoltage());
                 return roombaJSSC.batteryVoltage();
             }
         });
 
-        batteryComponent.add(new Sensor("batteryCurrent") {
+        batteryComponent.add(new Sensor("batteryCurrent", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
-                return roombaJSSC.batteryCurrent() + 1;
+                System.out.println("Sensor batteryCurrent: " + roombaJSSC.batteryCurrent());
+                return roombaJSSC.batteryCurrent();
             }
         });
 
-        batteryComponent.add(new Sensor("batteryTemperature") {
+        batteryComponent.add(new Sensor("batteryTemperature", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
+                System.out.println("Sensor batteryTemperature: " + roombaJSSC.batteryTemperature());
                 return roombaJSSC.batteryTemperature();
             }
         });
 
-        batteryComponent.add(new Sensor("batteryCharge") {
+        batteryComponent.add(new Sensor("batteryCharge", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
+                System.out.println("Sensor batteryCharge: " + roombaJSSC.batteryCharge());
                 return roombaJSSC.batteryCharge();
             }
         });
 
-        batteryComponent.add(new Sensor("batteryCapacity") {
+        batteryComponent.add(new Sensor("batteryCapacity", SENSOR_UPDATE_INTERVAL) {
             @Override
             public Integer readSensor() {
+                System.out.println("Sensor batteryCapacity: " + roombaJSSC.batteryCapacity());
                 return roombaJSSC.batteryCapacity();
             }
         });

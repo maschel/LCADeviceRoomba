@@ -27,9 +27,9 @@
                             <mainClass>jade.Boot</mainClass>
                             <id>LCADeviceRoomba</id>
                             <commandLineArguments>
-                                <commandLineArgument>-gui</commandLineArgument>
-                                <commandLineArgument>-agents roombaDevice:com.maschel.lca.lcadevice.agent.DeviceAgent(com.maschel.lcadevice.roomba.RoombaDevice)</commandLineArgument>
-                                <commandLineArgument>-port 12490</commandLineArgument>
+                                <commandLineArgument>-agents "Roomba1:com.maschel.lca.lcadevice.agent.DeviceAgent(com.maschel.lcadevice.roomba.RoombaDevice)"</commandLineArgument>
+                                <commandLineArgument>-mtps "jade.mtp.http.MessageTransportProtocol(http://192.168.1.100:7778)"</commandLineArgument>
+
                             </commandLineArguments>
                         </program>
                     </programs>
@@ -53,7 +53,7 @@
         <dependency>
             <groupId>com.maschel</groupId>
             <artifactId>lcadevice</artifactId>
-            <version>0.4.1-SNAPSHOT</version>
+            <version>0.4.2-SNAPSHOT</version>
         </dependency>
 
 
