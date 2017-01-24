@@ -46,47 +46,47 @@ import com.maschel.roomba.song.RoombaSongNote;
 public class Music {
 
     public static RoombaSongNote[] venga1 = {
-            new RoombaSongNote(RoombaNote.F1, RoombaNoteDuration.HalfNote),
-            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.EightNote),
-            new RoombaSongNote(RoombaNote.A1Sharp, RoombaNoteDuration.EightNote),
-            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.EightNote),
+            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.QuarterNote),
 
-            new RoombaSongNote(RoombaNote.F1, RoombaNoteDuration.EightNote),
-            new RoombaSongNote(RoombaNote.A1Sharp, RoombaNoteDuration.HalfNote),
-            new RoombaSongNote(RoombaNote.A2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F2, RoombaNoteDuration.SixteenthNote),
+            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.QuarterNote),
 
-            new RoombaSongNote(RoombaNote.A2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.A2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F2, RoombaNoteDuration.SixteenthNote),
+            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.G1, RoombaNoteDuration.QuarterNote),
 
-            new RoombaSongNote(RoombaNote.A2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F1, RoombaNoteDuration.HalfNote),
-            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.EightNote)
+            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.G1, RoombaNoteDuration.QuarterNote)
     };
 
     public static RoombaSongNote[] venga2 = {
-            new RoombaSongNote(RoombaNote.A1Sharp, RoombaNoteDuration.EightNote),
-            new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.EightNote),
-            new RoombaSongNote(RoombaNote.F1, RoombaNoteDuration.EightNote),
-            new RoombaSongNote(RoombaNote.A1Sharp, RoombaNoteDuration.HalfNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.G1, RoombaNoteDuration.QuarterNote),
 
-            new RoombaSongNote(RoombaNote.A2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.A2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F2, RoombaNoteDuration.SixteenthNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.G1, RoombaNoteDuration.QuarterNote),
 
-            new RoombaSongNote(RoombaNote.A2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.A2, RoombaNoteDuration.SixteenthNote),
-            new RoombaSongNote(RoombaNote.F2, RoombaNoteDuration.SixteenthNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.G1, RoombaNoteDuration.QuarterNote),
 
-            new RoombaSongNote(RoombaNote.F1, RoombaNoteDuration.QuarterNote),
-            new RoombaSongNote(RoombaNote.Pause, RoombaNoteDuration.EightNote),
-            new RoombaSongNote(RoombaNote.F1, RoombaNoteDuration.EightNote),
-            new RoombaSongNote(RoombaNote.F1, RoombaNoteDuration.EightNote)
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
+            new RoombaSongNote(RoombaNote.G1, RoombaNoteDuration.QuarterNote)
     };
 
     public static RoombaSongNote[] venga3 = {
@@ -353,14 +353,14 @@ public class Music {
     {
         roomba.song(0, venga1, 112);
         roomba.song(1, venga2, 112);
-        roomba.song(2, venga3, 112);
+        //roomba.song(2, venga3, 112);
 
         roomba.play(0);
         roomba.sleep(2600);
         roomba.play(1);
         roomba.sleep(2600);
-        roomba.play(2);
-        roomba.sleep(2400);
+        //roomba.play(2);
+        //roomba.sleep(2400);
     }
 
     public static void imperialMarch(RoombaJSSC roomba)
