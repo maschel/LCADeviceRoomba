@@ -53,11 +53,9 @@ public class Arguments {
         private Integer radius;
 
         public void parseRawArguments(List<Object> args) throws IllegalArgumentException {
-            Long velLong = (Long)args.get(0);
-            Long radLong = (Long)args.get(1);
-            this.velocity = new Integer(velLong.intValue());
-            this.radius = new Integer(radLong.intValue());
-        }
+            this.velocity = ((Double)args.get(0)).intValue();
+            this.radius = ((Double)args.get(1)).intValue();
+	}
 
         public Integer getVelocity() {
             return velocity;

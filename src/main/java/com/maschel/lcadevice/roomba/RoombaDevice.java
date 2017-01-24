@@ -137,6 +137,7 @@ public class RoombaDevice extends Device {
 
         roombaComponent.add(new Actuator<Void>("playMusic") {
             public void actuate(Void args) throws IllegalArgumentException {
+		roombaJSSC.safeMode();
                 System.out.println("Actuator playMusic");
 
                 // Fur Elise - Beethoven
