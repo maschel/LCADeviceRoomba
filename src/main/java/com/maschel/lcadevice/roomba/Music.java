@@ -351,14 +351,14 @@ public class Music {
 
     public static void venga(RoombaJSSC roomba)
     {
-        roomba.song(0, venga1, 112);
-        roomba.song(1, venga2, 112);
+        roomba.song(0, venga1, 225);
+        roomba.song(1, venga2, 225);
         //roomba.song(2, venga3, 112);
 
         roomba.play(0);
-        roomba.sleep(2600);
+        roomba.sleep(4300);
         roomba.play(1);
-        roomba.sleep(2600);
+        roomba.sleep(4300);
         //roomba.play(2);
         //roomba.sleep(2400);
     }
