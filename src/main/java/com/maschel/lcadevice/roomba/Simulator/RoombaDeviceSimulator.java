@@ -132,8 +132,8 @@ public class RoombaDeviceSimulator extends Device {
             }
         });
 
-        roombaComponent.add(new Actuator<Void>("playMusic") {
-            public void actuate(Void args) throws IllegalArgumentException {
+        roombaComponent.add(new Actuator<String>("playMusic") {
+            public void actuate(String args) throws IllegalArgumentException {
                 return;
             }
         });

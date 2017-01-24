@@ -135,36 +135,24 @@ public class RoombaDevice extends Device {
             }
         });
 
-        roombaComponent.add(new Actuator<Void>("playMusic") {
-            public void actuate(Void args) throws IllegalArgumentException {
-		roombaJSSC.safeMode();
-                System.out.println("Actuator playMusic");
-
-                // Fur Elise - Beethoven
-                RoombaSongNote[] notes = {
-                        new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.D2Sharp, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.D2Sharp, RoombaNoteDuration.EightNote),
-
-                        new RoombaSongNote(RoombaNote.E2, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.D2, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.C2, RoombaNoteDuration.EightNote),
-
-                        new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.QuarterNote),
-                        new RoombaSongNote(RoombaNote.Pause, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.C1, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.E1, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.A1, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.B1, RoombaNoteDuration.QuarterNote),
-                        new RoombaSongNote(RoombaNote.Pause, RoombaNoteDuration.EightNote),
-                        new RoombaSongNote(RoombaNote.E1, RoombaNoteDuration.EightNote)
-                };
-                // Save to song number 0, tempo (in BPM) 125
-                roombaJSSC.song(0, notes, 125);
-                // Play song 0
-                roombaJSSC.play(0);
+        roombaComponent.add(new Actuator<String>("playMusic") {
+            public void actuate(String songName) throws IllegalArgumentException {
+		        roombaJSSC.safeMode();
+                System.out.println("Actuator playMusic: " + songName);
+                switch(songName){
+                    case "knightRider":
+                        Music.knightRider(roombaJSSC);
+                        break;
+                    case "furElise":
+                        Music.furElise(roombaJSSC);
+                        break;
+                    case "sandstorm":
+                        Music.sandstorm(roombaJSSC);
+                        break;
+                    case "imperialMarch":
+                        Music.imperialMarch(roombaJSSC);
+                        break;
+                }
             }
         });
 
@@ -172,6 +160,7 @@ public class RoombaDevice extends Device {
         motorsComponent.add(new Actuator<Arguments.DriveArguments>("drive") {
             @Override
             public void actuate(Arguments.DriveArguments driveArguments) throws IllegalArgumentException {
+                roombaJSSC.safeMode();
                 System.out.println("Actuator drive: " + driveArguments.getVelocity() + ", " + driveArguments.getRadius());
                 roombaJSSC.drive(driveArguments.getVelocity(), driveArguments.getRadius());
             }
