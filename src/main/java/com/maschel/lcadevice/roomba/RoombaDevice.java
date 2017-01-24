@@ -152,6 +152,9 @@ public class RoombaDevice extends Device {
                     case 3:
                         Music.imperialMarch(roombaJSSC);
                         break;
+                    case 4:
+                        Music.venga(roombaJSSC);
+                        break;
                 }
             }
         });
