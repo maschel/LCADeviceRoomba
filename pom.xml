@@ -32,7 +32,7 @@
                             <commandLineArguments>
                                 <commandLineArgument>-agents "Roomba1:com.maschel.lca.lcadevice.agent.DeviceAgent(com.maschel.lcadevice.roomba.RoombaDevice)"</commandLineArgument>
                                 <commandLineArgument>-mtps "jade.mtp.http.MessageTransportProtocol(http://192.168.1.100:7778)"</commandLineArgument>
-				                <commandLineArgument>-platform-id "DevicePlatform"</commandLineArgument>
+		                <commandLineArgument>-platform-id "DevicePlatform"</commandLineArgument>
                             </commandLineArguments>
                         </program>
                     </programs>

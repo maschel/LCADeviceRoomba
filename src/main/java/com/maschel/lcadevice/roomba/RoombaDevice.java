@@ -153,10 +153,13 @@ public class RoombaDevice extends Device {
                         Music.imperialMarch(roombaJSSC);
                         break;
                     case 4:
-                        Music.venga(roombaJSSC);
+                        Music.whatislove(roombaJSSC);
                         break;
                     case 5:
                         Music.blue(roombaJSSC);
+                        break;					
+                    case 6:
+                        Music.zelda(roombaJSSC);
                         break;
                 }
             }
@@ -257,6 +260,20 @@ public class RoombaDevice extends Device {
                 return roombaJSSC.batteryCapacity();
             }
         });
+
+	batteryComponent.add(new Sensor("batteryPercentage", SENSOR_UPDATE_INTERVAL) {
+            @Override
+            public Double readSensor() {
+		double charge = (double)roombaJSSC.batteryCharge();
+		double capacity = (double)roombaJSSC.batteryCapacity();
+		double percentage = charge / capacity * 100.0;
+
+
+                System.out.println("Sensor batteryPercentage: " + percentage);
+                return percentage;
+            }
+        });
+
         roombaComponent.add(batteryComponent);
 
     }
